@@ -28,18 +28,27 @@ export const Hero = () => (
         </Link>
       </div>
     </div>
-    <div className="search-card">
-      <div className="panel-head" style={{ marginBottom: 0 }}>
-        <h2>Стек из вакансии → покрыт</h2>
-        <span>8/8</span>
-      </div>
-      <div className="stack-list">
-        {STACK_FROM_VACANCY.map((item) => (
-          <div key={item} className="pipeline-node">
-            <span>{item}</span>
-            <span className="layer layer-mart">есть</span>
-          </div>
-        ))}
+    <div className="stack" style={{ gap: 12 }}>
+      <figure className="photo-card hero-photo">
+        <img src="/brand/hero.jpg" alt="Направления Островка" />
+        <figcaption>
+          <b>Путешествия начинаются с данных</b>
+          <span>3 000 000+ вариантов размещения · 100 ТБ данных · 30 000 запросов в секунду</span>
+        </figcaption>
+      </figure>
+      <div className="search-card">
+        <div className="panel-head" style={{ marginBottom: 0 }}>
+          <h2>Стек из вакансии → покрыт</h2>
+          <span>8/8</span>
+        </div>
+        <div className="stack-list">
+          {STACK_FROM_VACANCY.map((item) => (
+            <div key={item} className="pipeline-node">
+              <span>{item}</span>
+              <span className="layer layer-mart">есть</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

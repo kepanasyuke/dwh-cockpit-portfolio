@@ -735,3 +735,69 @@ pre.sql {
     flex-direction: column;
   }
 }
+
+.brand-logo {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+.brand-sub {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-lg);
+}
+
+.photo-card {
+  margin: 0;
+  background: #fff;
+  border: 1px solid var(--neutral-10);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.photo-card figcaption {
+  padding: 12px 14px;
+  display: grid;
+  gap: 2px;
+}
+
+.photo-card figcaption b {
+  font-size: 15px;
+}
+
+.photo-card figcaption span {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.hero-photo img {
+  height: 190px;
+}
+
+@media (max-width: 940px) {
+  .photo-card img {
+    height: 120px;
+  }
+}

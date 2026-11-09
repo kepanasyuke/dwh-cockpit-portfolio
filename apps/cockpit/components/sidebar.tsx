@@ -27,11 +27,11 @@ export const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="logo">
-        <span className="logo-mark">О</span>
-        <span>
-          Кокпит
-          <small>Ostrovok · DWH</small>
-        </span>
+        <img className="logo-image" src="/brand/logo.svg" alt="Островок" width={112} height={24} />
+      </div>
+      <div className="logo-caption">
+        Кокпит
+        <small>Ostrovok · DWH</small>
       </div>
       <nav className="nav">
         {SECTIONS.map((section) => (

@@ -1,3 +1,4 @@
+import { DestinationsSection } from '@/components/landing/destinations';
 import { Hero } from '@/components/landing/hero';
 import { ProjectsSection } from '@/components/landing/projects-section';
 import { QualitySection } from '@/components/landing/quality-section';
@@ -13,6 +14,7 @@ const Home = () => (
       <Hero />
       <StatsStrip />
       <ProjectsSection />
+      <DestinationsSection />
       <StackTable />
       <QualitySection />
     </main>

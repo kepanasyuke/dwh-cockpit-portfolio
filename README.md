@@ -78,6 +78,11 @@ AI в аналитике, Python + React/Next.js.
 - шрифт бренда — **Spoof** (`font-family:Spoof` из CSS), с системным фолбэком
 - статусные цвета: success `#53AF24`, warning `#E77D00`, alert `#CE2121`
 
+Логотип, hero-фото и фотографии направлений взяты с ostrovok.ru и лежат в `apps/web/public/brand/`
+(копия — в `apps/cockpit/public/brand/`): `logo.svg`, `hero.jpg`, `tbilisi.jpg`, `kamchatka.jpg`,
+`kareliya.jpg`, `murmansk.jpg`, `bali.jpg`, `phuket.jpg`. На лендинге из них собрана секция «Направления»,
+в кокпите — полоса «Популярные направления» на сводке.
+
 ## Правила кода (проверяются автоматически)
 
 | Правило | TypeScript / JSX | Python |

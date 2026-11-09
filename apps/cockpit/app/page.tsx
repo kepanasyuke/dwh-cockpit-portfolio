@@ -5,6 +5,7 @@ import { DataGrid } from '@/components/data-grid';
 import { HealthStrip } from '@/components/health-strip';
 import { KpiTile } from '@/components/kpi-tile';
 import { PageHead } from '@/components/page-head';
+import { PhotoStrip } from '@/components/photo-strip';
 import { TrendChart } from '@/components/trend-chart';
 import { useScreen } from '@/lib/api';
 import type { Column, Overview } from '@/lib/types';
@@ -64,6 +65,14 @@ export default function OverviewPage() {
           <span>{data ? `${data.destinations.length} городов` : ''}</span>
         </div>
         <DataGrid columns={COLUMNS} rows={data?.destinations ?? []} />
+      </div>
+
+      <div className="card" style={{ marginTop: 12 }}>
+        <div className="card-head">
+          <h2>Популярные направления</h2>
+          <span>фото с ostrovok.ru</span>
+        </div>
+        <PhotoStrip />
       </div>
 
       <div className="card" style={{ marginTop: 12 }}>
