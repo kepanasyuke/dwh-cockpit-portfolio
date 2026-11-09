@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: payout_catalog
+    schema: dwh
+    tables:
+      - name: fact_payouts
+  - name: billing_catalog
+    schema: billing
+    tables:
+      - name: fact_billing
+
+models:
+  - name: stg_payout_union
+    description: Объединённый поток начислений и биллинга из двух каталогов Trino.
+
+  - name: mart_reconciliation
+    description: "Реестр сверки: начислено, выставлено, расхождение и статус кейса."
+    columns:
+      - name: partner
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['matched', 'minor', 'open']
+      - name: diff
+        tests: [not_null]

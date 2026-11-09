@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: bookings_daily
+
+models:
+  - name: stg_bookings_daily
+    description: Дневная история броней по направлениям.
+    columns:
+      - name: route
+        tests: [not_null]
+      - name: bookings
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0}
+
+  - name: mart_demand_forecast
+    description: "Бэктест прогноза спроса: план, факт и загрузка направления."
+    columns:
+      - name: load
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0, max_value: 200}

@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: quotes
+
+models:
+  - name: stg_quotes
+    description: Котировки направлений с ненулевой ценой и спросом.
+    columns:
+      - name: quote_id
+        tests: [unique, not_null]
+      - name: price
+        tests: [not_null]
+
+  - name: mart_elasticity
+    description: Оценка эластичности спроса по цене для каждого направления.
+    columns:
+      - name: route
+        tests: [unique, not_null]
+      - name: elasticity
+        tests:
+          - dbt_utils.accepted_range: {min_value: -5, max_value: 0}

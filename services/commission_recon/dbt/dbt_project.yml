@@ -1,0 +1,12 @@
+name: commission_recon
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  commission_recon:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +tags: ["daily", "finance"]

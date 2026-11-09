@@ -1,0 +1,12 @@
+name: demand_forecast
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  demand_forecast:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +tags: ["nightly", "planning"]

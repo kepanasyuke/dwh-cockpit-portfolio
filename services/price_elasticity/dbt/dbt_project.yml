@@ -1,0 +1,12 @@
+name: price_elasticity
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  price_elasticity:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +tags: ["weekly", "pricing"]

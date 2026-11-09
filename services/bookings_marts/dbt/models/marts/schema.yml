@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: fact_bookings
+      - name: dim_city
+      - name: dim_channel
+      - name: dim_date
+
+models:
+  - name: stg_bookings
+    description: Очищенный поток бронирований, ключ booking_id уникален.
+    columns:
+      - name: booking_id
+        tests: [unique, not_null]
+      - name: amount
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+
+  - name: int_booking_revenue
+    description: Обогащение факта измерениями и расчёт реализованной выручки.
+    columns:
+      - name: realised_gmv
+        tests: [not_null]
+
+  - name: mart_channel_performance
+    description: Витрина эффективности каналов продаж.
+    columns:
+      - name: channel
+        tests: [unique, not_null]
+      - name: conversion
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100

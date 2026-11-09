@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: supplier_feeds
+      - name: hotel_supplier_links
+      - name: market_demand
+
+models:
+  - name: hub_hotel
+    description: Хаб Data Vault — уникальный бизнес-ключ отеля.
+    columns:
+      - name: hub_key
+        tests: [unique, not_null]
+      - name: city
+        tests: [not_null]
+
+  - name: mart_coverage
+    description: Покрытие спроса по городам и ключевой поставщик направления.
+    columns:
+      - name: city
+        tests: [unique, not_null]
+      - name: coverage
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0, max_value: 100}

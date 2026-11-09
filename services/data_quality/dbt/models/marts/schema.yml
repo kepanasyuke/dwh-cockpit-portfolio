@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: airflow
+    schema: airflow
+    tables:
+      - name: pipeline_runs
+        freshness:
+          warn_after: {count: 15, period: minute}
+          error_after: {count: 60, period: minute}
+      - name: dq_checks
+
+models:
+  - name: mart_freshness
+    description: Свежесть и статус каждой dbt-модели с агрегацией DQ-проверок.
+    columns:
+      - name: model
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['ok', 'warn', 'fail']
+      - name: lag_hours
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0, max_value: 72}

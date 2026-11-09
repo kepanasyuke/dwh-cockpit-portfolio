@@ -1,0 +1,27 @@
+[project]
+name = "ostrovok-dwh-portfolio"
+version = "1.0.0"
+description = "8 DWH-проектов и продуктовый кокпит: FastAPI + SQL-витрины + dbt + Airflow"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "services",
+  "tools",
+  ".",
+]
+testpaths = ["services"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "RET", "PLR", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.pylint]
+max-returns = 1
+max-statements = 2
+max-branches = 2

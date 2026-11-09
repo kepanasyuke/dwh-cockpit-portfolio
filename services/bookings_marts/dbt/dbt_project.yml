@@ -1,0 +1,15 @@
+name: bookings_marts
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+target-path: "target"
+
+models:
+  bookings_marts:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+      +tags: ["daily", "finance"]

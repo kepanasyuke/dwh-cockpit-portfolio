@@ -1,0 +1,12 @@
+name: cancel_radar
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  cancel_radar:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      +tags: ["hourly", "risk"]

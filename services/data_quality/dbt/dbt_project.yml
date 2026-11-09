@@ -1,0 +1,10 @@
+name: data_quality
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  data_quality:
+    marts:
+      +materialized: incremental
+      +tags: ["monitoring", "every_5_min"]

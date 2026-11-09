@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: booking_events
+
+models:
+  - name: stg_bookings_events
+    description: Поток броней с признаками для скоринга отмен.
+    columns:
+      - name: booking_id
+        tests: [unique, not_null]
+      - name: lead_time_days
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0, max_value: 400}
+
+  - name: mart_cancel_risk
+    description: Витрина рисков отмены с ожидаемой потерей выручки.
+    columns:
+      - name: booking_id
+        tests: [unique, not_null]
+      - name: risk
+        tests:
+          - not_null
+          - dbt_utils.accepted_range: {min_value: 0, max_value: 1}

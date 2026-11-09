@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: bookings
+      - name: cancels
+      - name: metrics_catalog
+
+models:
+  - name: catalog_global_metrics
+    description: "Каталог метрик для NL→SQL: ключ, выражение и единица измерения."
+    columns:
+      - name: metric_key
+        tests: [unique, not_null]
+      - name: expression
+        tests: [not_null]

@@ -1,0 +1,26 @@
+{
+  "name": "ostrovok-dwh-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Портфолио Middle+ DWH Engineer: 8 проектов + продуктовый кокпит (React/Next.js + Python/SQL/dbt/Airflow)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @portfolio/web",
+    "dev:cockpit": "npm run dev --workspace @portfolio/cockpit",
+    "build": "npm run build --workspace @portfolio/web && npm run build --workspace @portfolio/cockpit",
+    "lint": "eslint .",
+    "api": "python tools/dev_apis.py",
+    "shots": "python tools/screenshots.py",
+    "check:py": "python tools/check_style.py",
+    "check:all": "npm run lint && npm run check:py",
+    "test": "python -m pytest services -q"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.14.0",
+    "typescript-eslint": "^8.46.0"
+  }
+}

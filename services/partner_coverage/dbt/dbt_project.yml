@@ -1,0 +1,13 @@
+name: partner_coverage
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  partner_coverage:
+    vault:
+      +materialized: table
+      +tags: ["raw_vault"]
+    marts:
+      +materialized: table
+      +tags: ["daily", "supply"]

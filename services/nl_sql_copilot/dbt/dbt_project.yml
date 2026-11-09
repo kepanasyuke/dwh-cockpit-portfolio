@@ -1,0 +1,10 @@
+name: nl_sql_copilot
+version: '1.0'
+profile: ostrovok_dwh
+model-paths: ["models"]
+
+models:
+  nl_sql_copilot:
+    marts:
+      +materialized: table
+      +tags: ["hourly", "copilot"]
